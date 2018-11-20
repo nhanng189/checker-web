@@ -1,0 +1,45 @@
+.tlp-card {
+    border-radius: 1px;
+    width: 669px;
+}
+
+.tlp-card-header {
+    padding: 20px !important;
+}
+
+.tlp-card-content {
+    padding: 5px 20px 20px 20px !important;
+}
+
+.tlp-card-action {
+    padding: 20px !important;
+}
+
+.tlp-username {
+    font-size: 18px;
+    font-weight: bold;
+    color: dodgerblue;
+    padding-bottom: 7px;
+}
+
+.tlp-time {
+    font-size: 10px;
+}
+
+.tlp-title {
+    font-size: 18px;
+}
+
+.tlp-action-field {
+    margin-right: 15px;
+}
+
+.tlp-action-icon {
+    padding: 1px !important;
+    margin-right: 3px !important;
+}
+
+.tlp-action-icon-img {
+    width: 25px;
+    height: 25px;
+}
