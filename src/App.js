@@ -9,7 +9,7 @@ var hist = createBrowserHistory();
 
 class App extends Component {
   render() {
-    return (<div>
+    return (<div className="gra">
       <Router history={hist}>
         <Switch>
           {indexRoutes.map((prop, key) => {

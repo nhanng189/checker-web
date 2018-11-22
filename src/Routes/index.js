@@ -1,8 +1,7 @@
-import App from '../App';
-import TimelinePost from '../Component/TimelinePost';
+import Homepage from '../Component/Homepage/Homepage';
 
 const indexRoutes = [
-    {path: '/', component: TimelinePost}
+    {path: '/', component: Homepage}
 ];
 
 export default indexRoutes;
