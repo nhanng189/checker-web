@@ -10,18 +10,18 @@ class Homepage extends Component {
     render() {
         return (
             <Grid container spacing={8}>
-                <Grid item xs={2}>
+                <Grid item xs={1}>
                 </Grid>
-                <Grid style={{marginTop: "50px"}} item xs={6}>
+                <Grid style={{marginTop: "50px"}} item xs={7}>
                     <Posts />
                 </Grid>
-                <Grid style={{marginTop: "50px"}} item xs={2}>
+                <Grid style={{marginTop: "50px"}} item xs={3}>
                     <Sticky>
                         <SuggestUsers />
                         <SuggestGenres />
                     </Sticky>
                 </Grid>
-                <Grid item xs={2}>
+                <Grid item xs={1}>
                 </Grid>
             </Grid>
         );

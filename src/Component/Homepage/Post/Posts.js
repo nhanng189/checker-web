@@ -11,7 +11,7 @@ class Posts extends Component {
   render() {
     return (
       <div>
-        <Card className="tlp-new-card">
+        {/* <Card className="tlp-new-card">
           <CardHeader
             className="tlp-new-card-title"
             avatar={
@@ -21,7 +21,7 @@ class Posts extends Component {
               <div className="tlp-new-title">New things want to share, Ahri?</div>
             }
           />
-        </Card>
+        </Card> */}
         <Post />
         <Post />
         <Post />

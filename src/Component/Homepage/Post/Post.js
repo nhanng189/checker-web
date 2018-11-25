@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -23,7 +24,7 @@ class Post extends Component {
     super(props);
     this.state = {
       avatar: "https://pbs.twimg.com/profile_images/733142049864585216/IzFb9HCz_400x400.jpg",
-      user: "Fuuuuuuuuuuu",
+      user: "Kumika Chan",
       time: "An hour ago",
       title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce placerat fringilla odio vitae gravida.！",
       images: ["https://pbs.twimg.com/media/Drtt3q7X4AAkJwH.jpg:large"],
