@@ -14,7 +14,7 @@ const styles = theme => ({
     },
 })
 
-class Login extends Component {
+class SignUp extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -67,9 +67,10 @@ class Login extends Component {
     loadLayoutForm = () => {
         return (
             <div>
-                <div style={{ paddingTop: "10px", margin: "auto", fontSize: "25px", width: "70px" }}>
-                    Login
+                <div style={{ paddingTop: "10px", margin: "auto", fontSize: "25px", width: "100px" }}>
+                    Sign Up
                 </div>
+
                 <div style={{ paddingTop: "10px" }}>
                     <InputText
                         label="Username"
@@ -77,19 +78,26 @@ class Login extends Component {
                     />
                 </div>
                 <div style={{color: "red", fontSize: "10px"}}>{this.state.usererro}</div>
-                <div style={{ paddingTop: "12px" }}>
+                <div style={{ paddingTop: "10px" }}>
                     <InputText
-                        type="password"
                         label="Password"
+                        type="password"
                         update={this.updatePassword}
                     />
                 </div>
                 <div style={{color: "red", fontSize: "10px"}}>{this.state.passerro}</div>
+                <div style={{ paddingTop: "10px" }}>
+                    <InputText
+                        label="Password  Confirm"
+                        type="password"
+                        update={this.updatePasswordConfirm}
+                    />
+                </div>
+                <div style={{color: "red", fontSize: "10px"}}>{this.state.passconfirmerro}</div>
                 <div style={{ paddingTop: "20px", width: "150px", margin: "auto" }}>
                     <Button style={{ width: "150px", backgroundColor: "#00aeff", fontSize: "14px", color: "white" }}
-                        component={Link} to="/trangchu"
                         onClick={this.checkInfor}>
-                        Login
+                        Sign Up
                     </Button>
                 </div>
             </div>
@@ -100,19 +108,20 @@ class Login extends Component {
         return (
             <div>
                 <div style={{ fontSize: "30px", height: "100px", color: "white", marginTop: "100px" }}>
-                    If you don't have an account, Please click here!!
+                   You have an account, Click here!!
                 </div>
                 <div style={{ width: "250px", margin: "auto" }}>
                     <Button style={{ width: "250px", color: "white", backgroundColor: "#ff7f00" }} 
-                        component={Link} to="/register"
+                        component={Link} to="/login"
                     >
-                        <div style={{ fontSize: "20px" }}> Sign Up</div>
+                        <div style={{ fontSize: "20px" }}> Login </div>
                     </Button>
                 </div>
             </div>
         );
     }
-    
+
+
     render() {
         const { classes } = this.props;
 
@@ -132,8 +141,8 @@ class Login extends Component {
     }
 }
 
-Login.propTypes = {
+SignUp.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Login);
+export default withStyles(styles)(SignUp);
