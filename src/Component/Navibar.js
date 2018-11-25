@@ -3,8 +3,12 @@ import { Link } from 'react-router-dom';
 
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
+import SearchIcon from '@material-ui/icons/Search';
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 import Logo1 from '../icons/logo1.png';
+import Logo2 from '../icons/logo2.png';
 
 class Navibar extends Component {
 
@@ -17,14 +21,33 @@ class Navibar extends Component {
 
   render() {
     return (
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <Button disableRipple style={{ minWidth: "100px", cursor: "default", width: "50px", backgroundColor: "transparent" }} color="primary">
-          <Input style={{ fontSize: "12px", color: "black" }} defaultValue="HOME" disabled />
-        </Button>
-        <img style={{ marginTop: "5px", padding: "15px", width: "100px", height: "100px" }} alt="logo" src={Logo1} />
-        <Button disableRipple style={{ minWidth: "100px", cursor: "default", width: "50px", backgroundColor: "transparent" }} color="primary">
-          <Input style={{textAlign:"right", fontSize: "12px", color: "black" }} defaultValue="EXPLORE" disabled />
-        </Button>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        {/* <div> */}
+        <img style={{ margin: "20px 0 15px 20px", width: "60px", height: "60px" }} alt="logo" src={Logo1} />
+        {/* <img style={{ margin: "5px", height: "50px" }} alt="logo" src={Logo2} /> */}
+
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <Button disableRipple style={{ float: "right", minWidth: "120px", backgroundColor: "transparent" }} color="default">
+            <span style={{ borderBottom: "1px #000000 solid", padding: "3px", fontSize: "13px", width: "100%", textAlign: "right" }}>
+              HOME</span>
+          </Button>
+          <Button disableRipple style={{ float: "right", minWidth: "120px", backgroundColor: "transparent" }} color="default">
+            <span style={{ borderBottom: "1px #000000 solid", padding: "3px", fontSize: "13px", width: "100%", textAlign: "right" }}>
+              EXPLORE</span>
+          </Button>
+          <Button disableRipple style={{ margin: "10px", float: "right", minWidth: "120px", backgroundColor: "transparent" }} color="default">
+            <span style={{ borderBottom: "1px #000000 solid", padding: "3px", fontSize: "13px", width: "100%", textAlign: "right" }}>
+              PROFILE</span>
+          </Button>
+          <TextField
+            style={{ margin: "20px 20px 15px 10px " }}
+            variant="outlined"
+            InputProps={{
+              startAdornment: <InputAdornment position="start"><SearchIcon /></InputAdornment>,
+            }}
+          />
+        </div>
+
       </div>
     );
   }
