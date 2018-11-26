@@ -1,0 +1,25 @@
+.appbar {
+    position: fixed !important;
+    top: 0;
+}
+
+.logo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 50px;
+    height: 50px;
+}
+
+.flexgrow {
+    flex-grow: 1;
+}
+
+.search {
+    width: 500px;
+    height: 35px;
+}
+
+.page-button {
+    background: transparent;
+    font-size: 15px !important;
+}

@@ -1,0 +1,57 @@
+.sgg-card {
+    border-radius: 2px !important;
+    margin-bottom: 20px;
+}
+
+.sgg-card-header {
+    padding: 20px !important;
+}
+
+.sgg-card-content {
+    padding: 5px 20px 20px 20px !important;
+}
+
+.sgg-card-title {
+    padding-top: 0 !important;
+    padding-bottom: 8px;
+}
+
+.sgg-card-content {
+    padding: 5px 20px 20px 20px !important;
+}
+
+.sgg-title {
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 7px;
+}
+
+.sgg-avatar {
+    width: 50px !important; 
+    height: 50px !important;
+}
+
+.sgg-user {
+    font-size: 15px;
+}
+
+.sgg-follow {
+    margin-top: 6px !important;
+    border-radius: 20px !important;
+    min-height: 25px !important;
+    padding: 0 !important;
+}
+
+.sgg-action-icon {
+    margin: 22px 17px 0 0 !important;
+    padding: 5px !important;
+}
+
+.sgg-chip {
+    height: 30px !important;
+    font-size: 15px !important;
+    font-style: oblique;
+    padding: 5px !important;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}

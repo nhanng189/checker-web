@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Router, Route, Switch } from 'react-router';
 import { createBrowserHistory } from 'history';
 
+import Navibar from './Component/Navibar';
 import indexRoutes from './Routes/index';
 import './App.css';
 
@@ -9,7 +10,8 @@ var hist = createBrowserHistory();
 
 class App extends Component {
   render() {
-    return (<div>
+    return (<div className="gra">
+    <Navibar/>
       <Router history={hist}>
         <Switch>
           {indexRoutes.map((prop, key) => {
