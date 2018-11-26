@@ -11,27 +11,189 @@ class Posts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      users: [
+        {
+          avatar: "https://pbs.twimg.com/profile_images/733142049864585216/IzFb9HCz_400x400.jpg",
+          user: "Kumika Chan",
+          time: "An hour ago",
+          title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce placerat fringilla odio vitae gravida.！",
+          images: ["https://pbs.twimg.com/media/Drtt3q7X4AAkJwH.jpg:large"],
+          love: 12,
+          comment: 3,
+          check: 9,
+          loved: false,
+          checked: false,
+          commentContent: [
+            {
+              user: "",
+              content: ""
+            }
+          ]
+        },
+        {
+          avatar: "https://pbs.twimg.com/profile_images/733142049864585216/IzFb9HCz_400x400.jpg",
+          user: "Kumika Chan",
+          time: "An hour ago",
+          title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce placerat fringilla odio vitae gravida.！",
+          images: ["https://pbs.twimg.com/media/Drtt3q7X4AAkJwH.jpg:large"],
+          love: 45,
+          comment: 2,
+          check: 7,
+          loved: false,
+          checked: false,
+          commentContent: [
+            {
+              user: "",
+              content: ""
+            }
+          ]
+        },
+        {
+          avatar: "https://pbs.twimg.com/profile_images/733142049864585216/IzFb9HCz_400x400.jpg",
+          user: "Kumika Chan",
+          time: "An hour ago",
+          title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce placerat fringilla odio vitae gravida.！",
+          images: ["https://pbs.twimg.com/media/Drtt3q7X4AAkJwH.jpg:large"],
+          love: 8,
+          comment: 4,
+          check: 7,
+          loved: false,
+          checked: false,
+          commentContent: [
+            {
+              user: "",
+              content: ""
+            }
+          ]
+        },
+        {
+          avatar: "https://pbs.twimg.com/profile_images/733142049864585216/IzFb9HCz_400x400.jpg",
+          user: "Kumika Chan",
+          time: "An hour ago",
+          title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce placerat fringilla odio vitae gravida.！",
+          images: ["https://pbs.twimg.com/media/Drtt3q7X4AAkJwH.jpg:large"],
+          love: 32,
+          comment: 4,
+          check: 7,
+          loved: false,
+          checked: false,
+          commentContent: [
+            {
+              user: "",
+              content: ""
+            }
+          ]
+        },
+        {
+          avatar: "https://pbs.twimg.com/profile_images/733142049864585216/IzFb9HCz_400x400.jpg",
+          user: "Kumika Chan",
+          time: "An hour ago",
+          title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce placerat fringilla odio vitae gravida.！",
+          images: ["https://pbs.twimg.com/media/Drtt3q7X4AAkJwH.jpg:large"],
+          love: 1,
+          comment: 12,
+          check: 45,
+          loved: false,
+          checked: false,
+          commentContent: [
+            {
+              user: "",
+              content: ""
+            }
+          ]
+        },
+        {
+          avatar: "https://pbs.twimg.com/profile_images/733142049864585216/IzFb9HCz_400x400.jpg",
+          user: "Kumika Chan",
+          time: "An hour ago",
+          title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce placerat fringilla odio vitae gravida.！",
+          images: ["https://pbs.twimg.com/media/Drtt3q7X4AAkJwH.jpg:large"],
+          love: 4,
+          comment: 7,
+          check: 69,
+          loved: false,
+          checked: false,
+          commentContent: [
+            {
+              user: "",
+              content: ""
+            }
+          ]
+        },
+        {
+          avatar: "https://pbs.twimg.com/profile_images/733142049864585216/IzFb9HCz_400x400.jpg",
+          user: "Kumika Chan",
+          time: "An hour ago",
+          title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce placerat fringilla odio vitae gravida.！",
+          images: ["https://pbs.twimg.com/media/Drtt3q7X4AAkJwH.jpg:large"],
+          love: 65,
+          comment: 8,
+          check: 12,
+          loved: false,
+          checked: false,
+          commentContent: [
+            {
+              user: "",
+              content: ""
+            }
+          ]
+        }
+      ]
     }
   }
 
+  toggleLove = (inx) => {
+    let clone = [...this.state.users];
+    clone.map((user, index) => {
+      if (index === inx) {
+        if (user.loved === false) {
+          user.loved = true;
+          user.love = user.love + 1;
+        }
+        else {
+          user.loved = false;
+          user.love = user.love - 1;
+        }
+      }
+    })
+    this.setState({
+      users: clone
+    })
+  }
+
+  toggleCheck = (inx) => {
+    let clone = [...this.state.users];
+    clone.map((user, index) => {
+      if (index === inx) {
+        if (user.checked === false) {
+          user.checked = true;
+          user.check = user.check + 1;
+        }
+        else {
+          user.checked = false;
+          user.check = user.check - 1;
+        }
+      }
+    })
+    this.setState({
+      users: clone
+    })
+  }
+
   render() {
-    let elements = this.state.users.map(() => {
-      return <Post />
+    let elements = this.state.users.map((user, index) => {
+      return <Post
+        index={index}
+        avatar={user.avatar} user={user.user}
+        time={user.time} title={user.title}
+        images={user.images} love={user.love}
+        comment={user.comment} check={user.check}
+        loved={user.loved} checked={user.checked}
+        toggleLove={this.toggleLove} toggleCheck={this.toggleCheck}
+      />
     })
     return (
-      <div style={{marginTop: "90px"}}>
-        {/* <Card className="tlp-new-card">
-          <CardHeader
-            className="tlp-new-card-title"
-            avatar={
-              <Avatar src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxUTuQKVLSEwIIRLRsfp0-sFKQhZrJo4FJ6rco7u_lJOWU3qjJ"} className="tlp-avatar" />
-            }
-            title={
-              <div className="tlp-new-title">New things want to share, Ahri?</div>
-            }
-          />
-        </Card> */}
+      <div style={{ marginTop: "90px" }}>
         {elements}
       </div >
     );

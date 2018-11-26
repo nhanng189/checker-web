@@ -8,82 +8,87 @@ import TagFaces from '@material-ui/icons/TagFaces';
 import Folder from '@material-ui/icons/Folder';
 import AddBox from '@material-ui/icons/AddBox';
 import ArrowRight from '@material-ui/icons/ArrowRight';
-import Clear from '@material-ui/icons/Clear';
+import ClearIcon from '@material-ui/icons/Clear';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
+import Card from '@material-ui/core/Card';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import IconButton from '@material-ui/core/IconButton';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
+
+import '../../Style/NewPost.css'
 
 class PickImages extends Component {
-    showListImage = () => {
-        const listImages = this.props.photos.map((image) => 
-            <div style={{width: "100px", height: "70px", float: "left", margin: "10px", backgroundColor: "black"}}>
-                <img src={image} style={{width: "100px", height: "70px"}} />
+  render() {
+    let elements = this.props.photos.map((image) => {
+      return <div style={{
+        width: "127px", height: "71.5px", float: "left", margin: "10px",
+        backgroundSize: "cover", backgroundImage: `url(${image})`
+      }} />
+    });
+
+    return (
+      <div>
+        <Dialog maxWidth="false" open={this.props.status}>
+          <IconButton onClick={this.props.distroySelected} style={{ background: "transparent", position: "absolute", right: "0" }}>
+            <ClearIcon />
+          </IconButton>
+          <DialogTitle style={{ padding: "30px 0 45px 0", textAlign: "center" }}>
+            <div style={{ fontSize: "30px" }}>Post your own photo</div>
+          </DialogTitle>
+          <DialogContent>
+            <div style={{ height: "80px", display: "flex", justifyContent: "center" }}>
+              <Button variant="fab" className="step-active">
+                <AddPhoto />
+              </Button>
+              <div className="connector" />
+              <Button variant="fab" className="step-inactive">
+                <RateReview />
+              </Button>
+              <div className="connector" />
+              <Button variant="fab" className="step-inactive">
+                <TagFaces />
+              </Button>
+              <div className="connector" />
+              <Button variant="fab" className="step-inactive">
+                <Folder />
+              </Button>
             </div>
-        );
-        return(
-            <div>{listImages}</div>
-        );
-    }
-    
-    render() {
-        
-        return (
-            <div>
-                <Dialog open={this.props.status}>
-                    <div style={{position: "absolute", right: "0"}}>
-                        <Button onClick={this.props.distroySelected}>
-                            <Clear style={{backgroundColor: "#007fff", color: "white"}}/>
-                        </Button>
-                    </div>
-                    <DialogTitle>
-                        <div style={{ fontSize: "30px", width: "280px", margin: "auto" }}>Post your own photo</div>
-                    </DialogTitle>
-                    <DialogContent>
-                        <div style={{ height: "70px", width: "350px", margin: "auto" }}>
-                            <Button variant="fab" style={{ float: "left", backgroundColor: "#ff7f00", color: "white" }}>
-                                <AddPhoto />
-                            </Button>
-                            <div style={{ float: "left", width: "40px", border: "1px solid black", marginTop: "25px" }}></div>
-                            <Button variant="fab" style={{ float: "left" }}>
-                                <RateReview />
-                            </Button>
-                            <div style={{ float: "left", width: "40px", border: "1px solid black", marginTop: "25px" }}></div>
-                            <Button variant="fab" style={{ float: "left" }}>
-                                <TagFaces />
-                            </Button>
-                            <div style={{ float: "left", width: "40px", border: "1px solid black", marginTop: "25px" }}></div>
-                            <Button variant="fab" style={{ float: "left" }}>
-                                <Folder />
-                            </Button>
-                        </div>
-                        <div style={{ width: "500px", height: "250px", float: "none", border: "1px solid black" }}>
-                            <div style={{borderBottom: "1px solid black", margin: "10px", textAlign: "center"}}>
-                                <div style={{padding: "10px", fontSize: "16px"}}>Upload photos from your computer</div>
-                            </div>
-                            {this.showListImage()}
-                            <Button style={{float: "left", marginTop: "25px"}}>
-                                <AddBox />
-                            </Button>
-                        </div>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button style={{fontSize: "13px", backgroundColor: "#007fff", color: "white", marginRight: "20px", marginBottom: "10px"}} onClick={this.props.selectedWriteContent}>
-                            <div style={{paddingLeft: "15px"}}>Next</div>
-                            <ArrowRight />
-                        </Button>
-                    </DialogActions>
-                </Dialog>
-            </div>
-        );
-    }
+            <Card style={{ width: "620px", height: "270px", margin: "0 15px 0 15px", border: "1px solid black" }}>
+              <CardHeader
+                title={
+                  <div style={{ borderBottom: "1px silver solid", textAlign: "center", padding: "10px 0 20px 0", fontSize: "16px" }}>Upload photos from your computer</div>
+                } />
+              <CardContent style={{ padding: "0 15px 0 15px" }}>
+                {elements}
+                <div style={{
+                  width: "127px", height: "71.5px", float: "left", margin: "10px", display: "flex", justifyContent: "center"
+                }} >
+                  <Button style={{ background: "transparent" }}>
+                    <AddBox />
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </DialogContent>
+          <DialogActions>
+            <Button style={{ fontSize: "13px", backgroundColor: "#007fff", color: "white", margin: "0 35px 20px 0", width: "120px" }} onClick={this.props.selectedWriteContent}>
+              <div style={{ paddingLeft: "15px" }}>Next</div>
+              <ArrowRight />
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+    );
+  }
 }
 
 PickImages.propTypes = {
-    photos: PropTypes.array.isRequired,
-    status: PropTypes.bool.isRequired,
-    selectedWriteContent: PropTypes.func.isRequired,
-    distroySelected: PropTypes.func.isRequired,
+  photos: PropTypes.array.isRequired,
+  status: PropTypes.bool.isRequired,
+  selectedWriteContent: PropTypes.func.isRequired,
+  distroySelected: PropTypes.func.isRequired,
 };
 
 export default PickImages;

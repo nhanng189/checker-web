@@ -1,0 +1,16 @@
+.connector {
+    float: left;
+    width: 40px;
+    border-top: 1px solid silver;
+    margin-top: 28px;
+}
+
+.step-active {
+    float: left;
+    background-color: #ff7f00 !important;
+    color: white !important;
+}
+
+.step-inactive {
+    float: left;
+}

@@ -18,33 +18,12 @@ import Check1 from '../../../icons/check1.png';
 import '../../../Style/TimelinePost.css';
 
 class Post extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      avatar: "https://pbs.twimg.com/profile_images/733142049864585216/IzFb9HCz_400x400.jpg",
-      user: "Kumika Chan",
-      time: "An hour ago",
-      title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce placerat fringilla odio vitae gravida.！",
-      images: ["https://pbs.twimg.com/media/Drtt3q7X4AAkJwH.jpg:large"],
-      love: "12k",
-      comment: "9k",
-      check: "5k",
-      loved: false,
-      checked: false
-    }
-  }
-
   toggleLove = () => {
-    this.setState({
-      loved: !this.state.loved
-    })
+    this.props.toggleLove(this.props.index);
   }
 
   toggleCheck = () => {
-    this.setState({
-      checked: !this.state.checked
-    })
+      this.props.toggleCheck(this.props.index);
   }
 
   render() {
@@ -53,7 +32,7 @@ class Post extends Component {
         <CardHeader
           className="tlp-card-header"
           avatar={
-            <Avatar src={this.state.avatar} className="tlp-avatar">
+            <Avatar src={this.props.avatar} className="tlp-avatar">
             </Avatar>
           }
           action={
@@ -63,40 +42,40 @@ class Post extends Component {
           }
           title={
             <div>
-              <div className="tlp-username">{this.state.user}</div>
-              <div className="tlp-time">{this.state.time}</div>
+              <div className="tlp-username">{this.props.user}</div>
+              <div className="tlp-time">{this.props.time}</div>
             </div>
           }
         />
         <CardContent className="tlp-card-content">
           <div className="tlp-title">
-            {this.state.title}
+            {this.props.title}
           </div>
         </CardContent>
         <CardMedia
           className="tlp-card-media"
-          image={this.state.images[0]}
+          image={this.props.images[0]}
         >
         </CardMedia>
         <CardActions disableActionSpacing className="tlp-card-action">
           <div className="tlp-action-field">
             <IconButton disableRipple="true" disableTouchRipple="true" className="tlp-action-icon" onClick={this.toggleLove}>
-              <img className="tlp-action-icon-img" alt="" src={this.state.loved ? Love4 : Love3} />
+              <img className="tlp-action-icon-img" alt="" src={this.props.loved ? Love4 : Love3} />
             </IconButton>
-            {this.state.loved ? `Loved ${this.state.love}` : `Love ${this.state.love}`}
+            {this.props.loved ? `Loved ${this.props.love}` : `Love ${this.props.love}`}
           </div>
           <div className="tlp-action-field">
             <IconButton disableRipple="true" disableTouchRipple="true" className="tlp-action-icon" onClick={this.toggleCheck}>
-              <img className="tlp-action-icon-img" alt="" src={this.state.checked ? Check1 : Check0} />
+              <img className="tlp-action-icon-img" alt="" src={this.props.checked ? Check1 : Check0} />
             </IconButton>
-            {this.state.checked ? `Checked ${this.state.check}` : `Check ${this.state.check}`}
+            {this.props.checked ? `Checked ${this.props.check}` : `Check ${this.props.check}`}
           </div>
           <div style={{ flexGrow: "1" }} />
           <div className="tlp-action-field">
             <IconButton disableRipple="true" disableTouchRipple="true" className="tlp-action-icon">
               <img className="tlp-action-icon-img" alt="" src={Comment} />
             </IconButton>
-            {`Comment ${this.state.comment}`}
+            {`Comment ${this.props.comment}`}
           </div>
         </CardActions>
         <div style={{ padding: "0 15px 0 15px" }}><hr /></div>
