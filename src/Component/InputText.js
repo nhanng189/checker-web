@@ -25,7 +25,7 @@ class InputText extends Component {
                             input: classes.resize,
                         },
                     }}
-                    onKeyDown = {this.props.update}
+                    onKeyUp = {this.props.update}
                 />
             </div>
         );
