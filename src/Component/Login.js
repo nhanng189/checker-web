@@ -117,7 +117,7 @@ class Login extends Component {
         const { classes } = this.props;
 
         return (
-            <div style={{backgroundImage: "url(" + backgroundImage + ")", width: "100%", height: "655px"}}>
+            <div style={{backgroundImage: "url(" + backgroundImage + ")", width: "100%", height: "100vh"}}>
                 <div style={{ float: "left", marginLeft: "200px", marginTop: "100px", width: "500px" }}>
                     {this.loadLayoutButton()}
                 </div>
