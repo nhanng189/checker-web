@@ -8,9 +8,19 @@ import '../../../Style/TimelinePost.css';
 
 class Posts extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    }
+  }
+
   render() {
+    let elements = this.state.users.map(() => {
+      return <Post />
+    })
     return (
-      <div>
+      <div style={{marginTop: "90px"}}>
         {/* <Card className="tlp-new-card">
           <CardHeader
             className="tlp-new-card-title"
@@ -22,11 +32,7 @@ class Posts extends Component {
             }
           />
         </Card> */}
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        {elements}
       </div >
     );
   }

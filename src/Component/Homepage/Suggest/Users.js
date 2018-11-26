@@ -17,30 +17,34 @@ class Users extends Component {
             users: [
                 {
                     avatar: "https://www.mobafire.com/images/avatars/lee-sin-muay-thai.png",
-                    user: "Bronze Leesin"
+                    user: "Nhan Dep Trai",
+                    isFollow: false
                 },
                 {
                     avatar: "https://avatarfiles.alphacoders.com/110/thumb-110640.png",
-                    user: "Silver Yi"
+                    user: "Manh Vat Vo",
+                    isFollow: false
                 },
                 {
                     avatar: "https://vignette.wikia.nocookie.net/leagueoflegends/images/9/91/Y_que_olvides_tu_apellidoo_zed.png/revision/latest?cb=20171010153449&path-prefix=es",
-                    user: "Best Zed"
+                    user: "Dat vai feet",
+                    isFollow: false
                 },
                 {
                     avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxUTuQKVLSEwIIRLRsfp0-sFKQhZrJo4FJ6rco7u_lJOWU3qjJ",
-                    user: "Sexy Ahri"
+                    user: "Khoa Tran 14 tuoi",
+                    isFollow: false
                 },
                 {
                     avatar: "https://www.mobafire.com/images/avatars/singed-classic.png",
-                    user: "Toxic Singed"
+                    user: "Dat tung phim",
+                    isFollow: false
                 }
             ]
         }
     }
 
     render() {
-
         let users = this.state.users.map((user) => {
             return (
                 <CardHeader
@@ -49,13 +53,13 @@ class Users extends Component {
                         <Avatar src={user.avatar} className="sgg-avatar" />
                     }
                     title={
-                        <div className="sgg-user">{user.user}<br/>
-                            <Button style={{marginTop: "5px", borderRadius: "20px", minHeight: "25px", height: "25px", padding: "0"}} size="small" variant="outlined" color="primary">Follow</Button>
+                        <div className="sgg-user">{user.user}<br />
+                            <Button className="sgg-follow" size="small" variant="outlined" color="primary">Follow</Button>
                         </div>
                     }
                     action={
                         <IconButton className="sgg-action-icon">
-                            <ClearIcon style={{fontSize: "15px"}} />
+                            <ClearIcon style={{ fontSize: "15px" }} />
                         </IconButton>
                     }
                 />
@@ -63,12 +67,12 @@ class Users extends Component {
         })
 
         return (
-            <Card className="sgg-card">
+            <Card style={{ marginTop: "90px" }} className="sgg-card">
                 <CardHeader
                     className="sgg-card-header"
                     title={
                         <div className="sgg-title">Suggested users
-                            <a href="/" style={{fontSize: "10px", float: "right"}}>See all</a>
+                            <a href="/" style={{ fontSize: "12px", float: "right" }}>See all</a>
                         </div>
                     }
                 />

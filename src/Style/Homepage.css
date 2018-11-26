@@ -1,0 +1,15 @@
+.grid {
+    margin-top: 50px !important;
+}
+
+.user-avatar {
+    width: 45px !important;
+    height: 45px !important;
+    border: 2px #ffff solid;
+    margin-bottom: 35px !important;
+}
+
+.user-avatar:hover {
+    width: 50px !important;
+    height: 50px !important;
+}

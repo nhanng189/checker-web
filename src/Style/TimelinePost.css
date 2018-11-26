@@ -1,7 +1,7 @@
 .tlp-card {
     border-radius: 2px !important;
     margin-bottom: 50px;
-    margin-right: 20px;
+    /* margin-right: 20px; */
 }
 
 .tlp-card-header {
@@ -13,7 +13,11 @@
 }
 
 .tlp-card-action {
-    padding: 20px !important;
+    padding: 20px 20px 0 20px !important;
+}
+
+.tlp-card-action-comment {
+    padding: 0 20px 20px 20px !important;
 }
 
 .tlp-avatar {
@@ -28,7 +32,7 @@
 }
 
 .tlp-time {
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .tlp-title {
