@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -7,10 +8,11 @@ import RateReview from '@material-ui/icons/RateReview';
 import TagFaces from '@material-ui/icons/TagFaces';
 import Folder from '@material-ui/icons/Folder';
 import AddBox from '@material-ui/icons/AddBox';
-import Publish from '@material-ui/icons/Publish';
+import ArrowDropUp from '@material-ui/icons/ArrowDropUp';
 import ArrowLeft from '@material-ui/icons/ArrowLeft';
 import Photo from '@material-ui/icons/Photo';
 import PhotoAlbum from '@material-ui/icons/PhotoAlbum';
+import Clear from '@material-ui/icons/Clear';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -49,6 +51,11 @@ class PickAlbum extends Component {
         return (
             <div>
                 <Dialog open={this.props.status}>
+                    <div style={{position: "absolute", right: "0"}}>
+                        <Button onClick={this.props.distroySelected}>
+                            <Clear style={{backgroundColor: "#007fff", color: "white"}}/>
+                        </Button>
+                    </div>
                     <DialogTitle>
                         <div style={{ fontSize: "30px", width: "280px", margin: "auto" }}>Post your own photo</div>
                     </DialogTitle>
@@ -84,9 +91,9 @@ class PickAlbum extends Component {
                             <ArrowLeft />
                             <div style={{ paddingRight: "15px" }}>Previous</div>
                         </Button>
-                        <Button style={{ fontSize: "13px", backgroundColor: "#007fff", color: "white", marginRight: "20px", marginBottom: "10px" }}>
-                            <div style={{ paddingLeft: "15px" }}>Next</div>
-                            <Publish />
+                        <Button style={{ fontSize: "13px", backgroundColor: "#007fff", color: "white", marginRight: "20px", marginBottom: "10px" }} component={Link} to="/trangchu">
+                            <div style={{ paddingLeft: "15px" }}>Post</div>
+                            <ArrowDropUp />
                         </Button>
                     </DialogActions>
                 </Dialog>
@@ -99,6 +106,7 @@ PickAlbum.propTypes = {
     albums: PropTypes.array.isRequired,
     status: PropTypes.bool.isRequired,
     selectedAddTags: PropTypes.func.isRequired,
+    distroySelected: PropTypes.func.isRequired,
 };
 
 export default PickAlbum;

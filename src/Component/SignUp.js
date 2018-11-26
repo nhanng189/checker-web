@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Card from '@material-ui/core/Card'
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
+import Logo1 from '../icons/logo1.png'
 import { withStyles } from '@material-ui/core/styles';
 import InputText from './InputText.js';
 
@@ -107,11 +108,17 @@ class SignUp extends Component {
     loadLayoutButton = () => {
         return (
             <div>
-                <div style={{ fontSize: "30px", height: "100px", color: "white", marginTop: "100px" }}>
-                   You have an account, Click here!!
+                <div style={{margin: "auto", width: "100px", marginTop: "20px"}}>
+                    <img src={Logo1} style={{width: "100px", height:"100px"}}/>
+                </div>
+                <div style={{ fontSize: "25px", width: "100%", textAlign: "center", height: "100px", color: "black", marginTop: "10px", padding: "20px" }}>
+                    Welcome to checker website
+                </div>
+                <div style={{ fontSize: "15px", width: "100%", textAlign: "center", marginBottom: "10px", color: "black", marginTop: "60px", paddingLeft: "20px", paddingRight: "20px" }}>
+                    Click button here! When you have an account
                 </div>
                 <div style={{ width: "250px", margin: "auto" }}>
-                    <Button style={{ width: "250px", color: "white", backgroundColor: "#ff7f00" }} 
+                    <Button style={{ width: "250px", color: "white", backgroundColor: "#ff7f00" }}
                         component={Link} to="/login"
                     >
                         <div style={{ fontSize: "20px" }}> Login </div>
@@ -126,16 +133,25 @@ class SignUp extends Component {
         const { classes } = this.props;
 
         return (
-            <div style={{backgroundImage: "url(" + backgroundImage + ")", width: "100%", height: "100vh"}}>
-                <div style={{ float: "left", marginLeft: "200px", marginTop: "100px", width: "500px" }}>
-                    {this.loadLayoutButton()}
-                </div>
+            <div style={{
+                backgroundImage: "url(" + backgroundImage + ")", width: "100%", height: "100vh", display: "table"
+                , position: "absolute", top: "0", left: "0"
+            }}>
+                <div style={{display: "table-cell", verticalAlign: "middle"}}>
+                    <div style={{width:"900px", marginLeft:"auto", marginRight:"auto"}}>
+                        <div style={{ float: "left", width: "500px", height:"400px", position: "relative", backgroundColor: "white", opacity: "0.9" }}>
+                        </div>
+                        <div style={{ float: "left", width: "500px", position: "absolute" }}>
+                            {this.loadLayoutButton()}
+                        </div>
 
-                <Card style={{ float: "right", marginRight: "200px", marginTop: "100px", width: "350px", height: "400px" }}>
-                    <div style={{ width: "250px", margin: "auto", marginTop: "50px" }}>
-                        {this.loadLayoutForm()}
+                        <Card style={{ float: "right", width: "350px", height: "400px" }}>
+                            <div style={{ width: "250px", margin: "auto", marginTop: "50px" }}>
+                                {this.loadLayoutForm()}
+                            </div>
+                        </Card>
                     </div>
-                </Card>
+                </div>
             </div>
         );
     }

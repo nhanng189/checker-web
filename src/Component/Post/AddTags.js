@@ -11,6 +11,7 @@ import Folder from '@material-ui/icons/Folder';
 import AddBox from '@material-ui/icons/AddBox';
 import ArrowLeft from '@material-ui/icons/ArrowLeft';
 import ArrowRight from '@material-ui/icons/ArrowRight';
+import Clear from '@material-ui/icons/Clear';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
@@ -46,6 +47,11 @@ class AddTags extends Component {
         return (
             <div>
                 <Dialog open={this.props.status}>
+                    <div style={{position: "absolute", right: "0"}}>
+                        <Button onClick={this.props.distroySelected}>
+                            <Clear style={{backgroundColor: "#007fff", color: "white"}}/>
+                        </Button>
+                    </div>
                     <DialogTitle>
                         <div style={{ fontSize: "30px", width: "280px", margin: "auto" }}>Post your own photo</div>
                     </DialogTitle>
@@ -116,6 +122,7 @@ AddTags.propTypes = {
     handleAddTag: PropTypes.func.isRequired,
     selectedWriteContent: PropTypes.func.isRequired,
     selectedPickAlbum: PropTypes.func.isRequired,
+    distroySelected: PropTypes.func.isRequired,
 };
 
 export default AddTags;
