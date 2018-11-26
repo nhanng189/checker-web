@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
+import Chip from '@material-ui/core/Chip'
 import AddPhoto from '@material-ui/icons/AddPhotoAlternate';
 import RateReview from '@material-ui/icons/RateReview';
 import TagFaces from '@material-ui/icons/TagFaces';
 import Folder from '@material-ui/icons/Folder';
 import AddBox from '@material-ui/icons/AddBox';
+import ArrowLeft from '@material-ui/icons/ArrowLeft';
 import ArrowRight from '@material-ui/icons/ArrowRight';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -14,19 +17,32 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 class AddTags extends Component {
-    showListImage = () => {
-        const listImages = this.props.photos.map((image) => 
-            <div style={{width: "100px", height: "70px", float: "left", margin: "10px", backgroundColor: "black"}}>
-                <img src={image} style={{width: "100px", height: "70px"}} />
-            </div>
+    constructor(props) {
+        super(props);
+        this.state = {
+            tag: "",
+        }
+    }
+
+    handleWriteTag = (event) => {
+        this.setState({tag: event.target.value})
+    }
+
+    showListTag = () => {
+        const listTags = this.props.tags.map((tag) =>
+            <Chip
+                label={tag}
+                onDelete={this.props.handleDeleteTag(tag)}
+                style={{ margin: "5px" }}
+            />
         );
-        return(
-            <div>{listImages}</div>
+        return (
+            <div>{listTags}</div>
         );
     }
-    
+
     render() {
-        
+
         return (
             <div>
                 <Dialog open={this.props.status}>
@@ -52,18 +68,38 @@ class AddTags extends Component {
                             </Button>
                         </div>
                         <div style={{ width: "500px", height: "250px", float: "none", border: "1px solid black" }}>
-                            <div style={{borderBottom: "1px solid black", margin: "10px", textAlign: "center"}}>
-                                <div style={{padding: "10px", fontSize: "16px"}}>Upload photos from your computer</div>
+                            <div style={{ borderBottom: "1px solid black", margin: "10px", textAlign: "center" }}>
+                                <div style={{ padding: "10px", fontSize: "16px" }}>Add some tags in your photos</div>
                             </div>
-                            {this.showListImage()}
-                            <Button style={{float: "left", marginTop: "25px"}}>
-                                <AddBox />
-                            </Button>
+                            <div style={{ width: "100%", height: "130px" }}>
+                                {this.showListTag()}
+                            </div>
+                            <div style={{ width: "100%" }}>
+                                <div style={{width:"350px", float: "left", marginLeft: "20px"}}>
+                                    <TextField
+                                        type="text"
+                                        multiline
+                                        variant="outlined"
+                                        fullWidth
+                                        InputProps={{
+                                            style: { fontSize: "16px", height: "15px" }
+                                        }}
+                                        onKeyUp = {this.handleWriteTag}
+                                    />
+                                </div>
+                                <Button style={{ float: "left" }} onClick={this.props.handleAddTag(this.state.tag)}>
+                                    <AddBox />
+                                </Button>
+                            </div>
                         </div>
                     </DialogContent>
                     <DialogActions>
-                        <Button style={{fontSize: "13px", backgroundColor: "#007fff", color: "white", marginRight: "20px", marginBottom: "10px"}}>
-                            <div style={{paddingLeft: "15px"}}>Next</div>
+                        <Button style={{ fontSize: "13px", backgroundColor: "#007fff", color: "white", marginRight: "20px", marginBottom: "10px" }} onClick={this.props.selectedWriteContent}>
+                            <ArrowLeft />
+                            <div style={{ paddingRight: "15px" }}>Previous</div>
+                        </Button>
+                        <Button style={{ fontSize: "13px", backgroundColor: "#007fff", color: "white", marginRight: "20px", marginBottom: "10px" }} onClick={this.props.selectedPickAlbum}>
+                            <div style={{ paddingLeft: "15px" }}>Next</div>
                             <ArrowRight />
                         </Button>
                     </DialogActions>
@@ -74,8 +110,12 @@ class AddTags extends Component {
 }
 
 AddTags.propTypes = {
-    photos: PropTypes.array.isRequired,
+    tags: PropTypes.array.isRequired,
     status: PropTypes.bool.isRequired,
+    handleDeleteTag: PropTypes.func.isRequired,
+    handleAddTag: PropTypes.func.isRequired,
+    selectedWriteContent: PropTypes.func.isRequired,
+    selectedPickAlbum: PropTypes.func.isRequired,
 };
 
 export default AddTags;

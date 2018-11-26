@@ -54,16 +54,17 @@ class WriteContent extends Component {
                                         style: {fontSize: "16px"}
                                     }}
                                     rows="5"
+                                    onKeyUp = {this.props.handleWriteComment}
                                 />
                             </div>
                         </div>
                     </DialogContent>
                     <DialogActions>
-                        <Button style={{ fontSize: "13px", backgroundColor: "#007fff", color: "white", marginRight: "20px", marginBottom: "10px" }}>
+                        <Button style={{ fontSize: "13px", backgroundColor: "#007fff", color: "white", marginRight: "20px", marginBottom: "10px" }} onClick = {this.props.selectedPickImage}>
                             <ArrowLeft />
                             <div style={{ paddingRight: "15px" }}>Previous</div>
                         </Button>
-                        <Button style={{ fontSize: "13px", backgroundColor: "#007fff", color: "white", marginRight: "20px", marginBottom: "10px" }}>
+                        <Button style={{ fontSize: "13px", backgroundColor: "#007fff", color: "white", marginRight: "20px", marginBottom: "10px" }} onClick={this.props.selectedAddTags}>
                             <div style={{ paddingLeft: "15px" }}>Next</div>
                             <ArrowRight />
                         </Button>
@@ -76,6 +77,9 @@ class WriteContent extends Component {
 
 WriteContent.propTypes = {
     status: PropTypes.bool.isRequired,
+    handleWriteComment: PropTypes.func.isRequired,
+    selectedAddTags: PropTypes.func.isRequired,
+    selectedPickImage: PropTypes.func.isRequired,
 };
 
 export default WriteContent;

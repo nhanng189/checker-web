@@ -62,7 +62,7 @@ class PickImages extends Component {
                         </div>
                     </DialogContent>
                     <DialogActions>
-                        <Button style={{fontSize: "13px", backgroundColor: "#007fff", color: "white", marginRight: "20px", marginBottom: "10px"}}>
+                        <Button style={{fontSize: "13px", backgroundColor: "#007fff", color: "white", marginRight: "20px", marginBottom: "10px"}} onClick={this.props.selectedWriteContent}>
                             <div style={{paddingLeft: "15px"}}>Next</div>
                             <ArrowRight />
                         </Button>
@@ -76,6 +76,7 @@ class PickImages extends Component {
 PickImages.propTypes = {
     photos: PropTypes.array.isRequired,
     status: PropTypes.bool.isRequired,
+    selectedWriteContent: PropTypes.func.isRequired,
 };
 
 export default PickImages;

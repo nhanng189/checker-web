@@ -7,7 +7,8 @@ import RateReview from '@material-ui/icons/RateReview';
 import TagFaces from '@material-ui/icons/TagFaces';
 import Folder from '@material-ui/icons/Folder';
 import AddBox from '@material-ui/icons/AddBox';
-import ArrowRight from '@material-ui/icons/ArrowRight';
+import Publish from '@material-ui/icons/Publish';
+import ArrowLeft from '@material-ui/icons/ArrowLeft';
 import Photo from '@material-ui/icons/Photo';
 import PhotoAlbum from '@material-ui/icons/PhotoAlbum';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -79,9 +80,13 @@ class PickAlbum extends Component {
                         </div>
                     </DialogContent>
                     <DialogActions>
+                        <Button style={{ fontSize: "13px", backgroundColor: "#007fff", color: "white", marginRight: "20px", marginBottom: "10px" }} onClick={this.props.selectedAddTags}>
+                            <ArrowLeft />
+                            <div style={{ paddingRight: "15px" }}>Previous</div>
+                        </Button>
                         <Button style={{ fontSize: "13px", backgroundColor: "#007fff", color: "white", marginRight: "20px", marginBottom: "10px" }}>
                             <div style={{ paddingLeft: "15px" }}>Next</div>
-                            <ArrowRight />
+                            <Publish />
                         </Button>
                     </DialogActions>
                 </Dialog>
@@ -93,6 +98,7 @@ class PickAlbum extends Component {
 PickAlbum.propTypes = {
     albums: PropTypes.array.isRequired,
     status: PropTypes.bool.isRequired,
+    selectedAddTags: PropTypes.func.isRequired,
 };
 
 export default PickAlbum;
