@@ -14,7 +14,7 @@ class Posts extends Component {
       users: [
         {
           avatar: "https://pbs.twimg.com/profile_images/733142049864585216/IzFb9HCz_400x400.jpg",
-          user: "Kumika Chan",
+          user: "Fumika Chan",
           time: "An hour ago",
           title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce placerat fringilla odio vitae gravida.！",
           images: ["https://pbs.twimg.com/media/Drtt3q7X4AAkJwH.jpg:large"],
@@ -32,7 +32,7 @@ class Posts extends Component {
         },
         {
           avatar: "https://pbs.twimg.com/profile_images/733142049864585216/IzFb9HCz_400x400.jpg",
-          user: "Kumika Chan",
+          user: "Fumika Chan",
           time: "An hour ago",
           title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce placerat fringilla odio vitae gravida.！",
           images: ["https://pbs.twimg.com/media/Drtt3q7X4AAkJwH.jpg:large"],
@@ -50,7 +50,7 @@ class Posts extends Component {
         },
         {
           avatar: "https://pbs.twimg.com/profile_images/733142049864585216/IzFb9HCz_400x400.jpg",
-          user: "Kumika Chan",
+          user: "Fumika Chan",
           time: "An hour ago",
           title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce placerat fringilla odio vitae gravida.！",
           images: ["https://pbs.twimg.com/media/Drtt3q7X4AAkJwH.jpg:large"],
@@ -68,7 +68,7 @@ class Posts extends Component {
         },
         {
           avatar: "https://pbs.twimg.com/profile_images/733142049864585216/IzFb9HCz_400x400.jpg",
-          user: "Kumika Chan",
+          user: "Fumika Chan",
           time: "An hour ago",
           title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce placerat fringilla odio vitae gravida.！",
           images: ["https://pbs.twimg.com/media/Drtt3q7X4AAkJwH.jpg:large"],
@@ -86,7 +86,7 @@ class Posts extends Component {
         },
         {
           avatar: "https://pbs.twimg.com/profile_images/733142049864585216/IzFb9HCz_400x400.jpg",
-          user: "Kumika Chan",
+          user: "Fumika Chan",
           time: "An hour ago",
           title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce placerat fringilla odio vitae gravida.！",
           images: ["https://pbs.twimg.com/media/Drtt3q7X4AAkJwH.jpg:large"],
@@ -104,7 +104,7 @@ class Posts extends Component {
         },
         {
           avatar: "https://pbs.twimg.com/profile_images/733142049864585216/IzFb9HCz_400x400.jpg",
-          user: "Kumika Chan",
+          user: "Fumika Chan",
           time: "An hour ago",
           title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce placerat fringilla odio vitae gravida.！",
           images: ["https://pbs.twimg.com/media/Drtt3q7X4AAkJwH.jpg:large"],
@@ -122,7 +122,7 @@ class Posts extends Component {
         },
         {
           avatar: "https://pbs.twimg.com/profile_images/733142049864585216/IzFb9HCz_400x400.jpg",
-          user: "Kumika Chan",
+          user: "Fumika Chan",
           time: "An hour ago",
           title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce placerat fringilla odio vitae gravida.！",
           images: ["https://pbs.twimg.com/media/Drtt3q7X4AAkJwH.jpg:large"],

@@ -19,6 +19,27 @@ import CardContent from '@material-ui/core/CardContent';
 import Card from '@material-ui/core/Card';
 
 class WriteContent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: ""
+    }
+  }
+
+  onSubmit = () => {
+    this.props.handleWriteTitle(this.state.title);
+  }
+
+  onChange = (event) => {
+    var target = event.target;
+    var value = target.value;
+    var name = target.name;
+
+    this.setState({
+        [name]: value
+    })
+}
+
   render() {
     return (
       <div>
@@ -62,7 +83,7 @@ class WriteContent extends Component {
                     style: { height: "160px", fontSize: "16px" }
                   }}
                   rows="5"
-                  onKeyUp={this.props.handleWriteComment}
+                  onChange={this.onChange}
                 />
               </CardContent>
             </Card>
