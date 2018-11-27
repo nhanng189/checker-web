@@ -107,7 +107,7 @@ class PickAlbum extends Component {
               <ArrowLeft />
               <div style={{ paddingRight: "15px" }}>Previous</div>
             </Button>
-            <Button component={Link} to="/" style={{ fontSize: "13px", backgroundColor: "#007fff", color: "white", margin: "0 35px 20px 0", width: "120px" }} >
+            <Button onClick={this.props.distroySelected} style={{ fontSize: "13px", backgroundColor: "#007fff", color: "white", margin: "0 35px 20px 0", width: "120px" }} >
               <div style={{ paddingLeft: "15px" }}>Post</div>
               <ArrowDropUp />
             </Button>

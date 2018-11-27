@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import Chip from '@material-ui/core/Chip'
 import AddPhoto from '@material-ui/icons/AddPhotoAlternate';
+import AddBox from '@material-ui/icons/AddBox';
 import RateReview from '@material-ui/icons/RateReview';
 import TagFaces from '@material-ui/icons/TagFaces';
 import Folder from '@material-ui/icons/Folder';
@@ -41,7 +42,7 @@ class AddTags extends Component {
       return <Chip
         label={tag}
         onDelete={this.props.handleDeleteTag(tag)}
-        style={{ margin: "5px" }}
+        style={{ margin: "5px", fontSize: "16px" }}
       />
     });
 
@@ -78,20 +79,21 @@ class AddTags extends Component {
                   <div style={{ borderBottom: "1px silver solid", textAlign: "center", padding: "10px 0 20px 0", fontSize: "16px" }}>Add some tags for your photos</div>
                 } />
               <CardContent style={{ padding: "0 15px 0 15px" }}>
-                {elements}
-                <form onSubmit={this.onSubmit}>
-                  <TextField style={{ width: "350px", float: "left", marginLeft: "20px" }}
+                <div style={{height: "135px"}}>{elements}</div>
+                
+                <form onSubmit={this.onSubmit} style={{}}>
+                  <TextField style={{ width: "350px", float: "left", marginLeft: "10px" }}
                     type="text"
                     variant="outlined"
                     fullWidth
                     InputProps={{
-                      style: { fontSize: "16px", height: "15px" }
+                      style: { fontSize: "16px", height: "30px" }
                     }}
                     onKeyUp={this.handleWriteTag}
                   />
-                  {/* <Button style={{ float: "left" }} onClick={this.props.handleAddTag(this.state.tag)}>
+                  <Button style={{ float: "left", padding: "0" }} onClick={this.props.handleAddTag(this.state.tag)}>
                     <AddBox />
-                  </Button> */}
+                  </Button>
                 </form>
               </CardContent>
             </Card>

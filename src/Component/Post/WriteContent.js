@@ -26,19 +26,10 @@ class WriteContent extends Component {
     }
   }
 
-  onSubmit = () => {
+  onChange = (event) => {
+    this.setState({title: event.target.value});
     this.props.handleWriteTitle(this.state.title);
   }
-
-  onChange = (event) => {
-    var target = event.target;
-    var value = target.value;
-    var name = target.name;
-
-    this.setState({
-        [name]: value
-    })
-}
 
   render() {
     return (
@@ -106,7 +97,7 @@ class WriteContent extends Component {
 
 WriteContent.propTypes = {
   status: PropTypes.bool.isRequired,
-  handleWriteComment: PropTypes.func.isRequired,
+  handleWriteTitle: PropTypes.func.isRequired,
   selectedAddTags: PropTypes.func.isRequired,
   selectedPickImage: PropTypes.func.isRequired,
   distroySelected: PropTypes.func.isRequired,

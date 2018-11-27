@@ -112,7 +112,7 @@ class SignUp extends Component {
                     <img src={Logo1} style={{width: "100px", height:"100px"}}/>
                 </div>
                 <div style={{ fontSize: "25px", width: "100%", textAlign: "center", height: "100px", color: "black", marginTop: "10px", padding: "20px" }}>
-                    Welcome to checker website
+                    Welcome to Checker
                 </div>
                 <div style={{ fontSize: "15px", width: "100%", textAlign: "center", marginBottom: "10px", color: "black", marginTop: "60px", paddingLeft: "20px", paddingRight: "20px" }}>
                     Click button here! When you have an account
