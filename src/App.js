@@ -3,7 +3,7 @@ import { Router, Route, Switch } from 'react-router';
 import { createBrowserHistory } from 'history';
 
 import Navibar from './Component/Navibar';
-import indexRoutes from './Routes/index';
+import indexRoutes from './Routes';
 import './App.css';
 
 var hist = createBrowserHistory();

@@ -4,7 +4,7 @@ import Avatar from '@material-ui/core/Avatar';
 
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
-import Popper from '@material-ui/core/Popper';
+// import Popper from '@material-ui/core/Popper';
 import TextField from '@material-ui/core/TextField';
 
 import '../../Style/Homepage.css';
@@ -57,7 +57,7 @@ class Users extends Component {
         <Button className="user-avatar" variant="fab" color="secondary" onClick={this.handleClick} >
           <SearchIcon />
         </Button>
-        <Popper
+        {/*<Popper
           style={{ marginLeft: "5px" }}
           placement="right"
           open={open}
@@ -69,7 +69,7 @@ class Users extends Component {
             placeholder="Search users"
             variant="outlined"
           />
-        </Popper>
+        </Popper>*/}
         {elements}
       </div>
     );
