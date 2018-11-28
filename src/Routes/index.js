@@ -9,7 +9,7 @@ const indexRoutes = [
     { path: '/post/:id', component: Detail },
     { path: '/post', component: Post },
     { path: '/login', component: Login },
-    { path: '/loginContainer', component: LoginContainer },
+    // { path: '/loginContainer', component: LoginContainer },
     { path: '/register', component: SignUp },
     { path: '/', component: Homepage }
 ];
