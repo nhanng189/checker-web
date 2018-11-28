@@ -17,27 +17,27 @@ class Users extends Component {
             users: [
                 {
                     avatar: "https://www.mobafire.com/images/avatars/lee-sin-muay-thai.png",
-                    user: "Nhan Dep Trai",
+                    user: "Tenkuji Takeru",
                     isFollow: false
                 },
                 {
                     avatar: "https://avatarfiles.alphacoders.com/110/thumb-110640.png",
-                    user: "Manh Vat Vo",
+                    user: "Hibiki Yuta",
                     isFollow: false
                 },
                 {
                     avatar: "https://vignette.wikia.nocookie.net/leagueoflegends/images/9/91/Y_que_olvides_tu_apellidoo_zed.png/revision/latest?cb=20171010153449&path-prefix=es",
-                    user: "Dat vai feet",
+                    user: "Shinosuke",
                     isFollow: false
                 },
                 {
                     avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxUTuQKVLSEwIIRLRsfp0-sFKQhZrJo4FJ6rco7u_lJOWU3qjJ",
-                    user: "Khoa Tran 14 tuoi",
+                    user: "Sinjo Akane",
                     isFollow: false
                 },
                 {
                     avatar: "https://www.mobafire.com/images/avatars/singed-classic.png",
-                    user: "Dat tung phim",
+                    user: "Zetsu",
                     isFollow: false
                 }
             ]

@@ -89,7 +89,7 @@ class Login extends Component {
                 <div style={{ color: "red", fontSize: "10px" }}>{this.state.passerro}</div>
                 <div style={{ paddingTop: "20px", width: "150px", margin: "auto" }}>
                     <Button style={{ width: "150px", backgroundColor: "#00aeff", fontSize: "14px", color: "white" }}
-                        component={Link} to="/trangchu"
+                        component={Link} to="/"
                         onClick={this.checkInfor}>
                         Login
                     </Button>
@@ -105,7 +105,7 @@ class Login extends Component {
                     <img src={Logo1} style={{width: "100px", height:"100px"}}/>
                 </div>
                 <div style={{ fontSize: "25px", width: "100%", textAlign: "center", height: "100px", color: "black", marginTop: "10px", padding: "20px" }}>
-                    Welcome to checker website
+                    Welcome to Checker
                 </div>
                 <div style={{ fontSize: "15px", width: "100%", textAlign: "center", marginBottom: "10px", color: "black", marginTop: "60px", paddingLeft: "20px", paddingRight: "20px" }}>
                     Click button to create new account

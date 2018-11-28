@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -23,7 +24,7 @@ class Post extends Component {
   }
 
   toggleCheck = () => {
-      this.props.toggleCheck(this.props.index);
+    this.props.toggleCheck(this.props.index);
   }
 
   render() {
@@ -53,7 +54,8 @@ class Post extends Component {
           </div>
         </CardContent>
         <CardMedia
-          className="tlp-card-media"
+          component={Link} to={`/post/${this.props.index}`}
+          className="tlp-card-media"  
           image={this.props.images[0]}
         >
         </CardMedia>

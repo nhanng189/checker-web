@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import PickImage from './Post/PickImages';
 import WriteContent from './Post/WriteContent';
 import AddTags from './Post/AddTags';
@@ -127,7 +129,7 @@ class Navibar extends Component {
 
                 <div className="flexgrow" />
 
-                <Button className="page-button" color="inherit">HOME</Button>
+                <Button component={Link} to="/" className="page-button" color="inherit">HOME</Button>
                 <Button className="page-button" color="inherit">EXPLORE</Button>
                 <Button className="page-button" color="inherit">PROFILE</Button>
 

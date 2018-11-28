@@ -36,8 +36,9 @@ class Post extends Component {
     this.setState({ tags: TagsData })
   }
 
-  handleWriteComment = event => () => {
-    this.setState({ comments: event.target.value });
+  handleWriteTitle = (title) => {
+    this.setState({ comments: title });
+    console.log(title)
   }
 
   selectedPickImage = () => {
@@ -86,7 +87,7 @@ class Post extends Component {
         />
         <WriteContent
           status={this.state.writecontent}
-          handleWriteComment={this.handleWriteComment}
+          handleWriteTitle={this.handleWriteTitle}
           selectedAddTags={this.selectedAddTags}
           selectedPickImage={this.selectedPickImage}
         />
