@@ -26,6 +26,7 @@ class Login extends Component {
             usererro: "",
             passerro: "",
             passconfirmerro: "",
+            user: { userName: "admin", password: "1" }
         }
     }
 
@@ -89,8 +90,7 @@ class Login extends Component {
                 <div style={{ color: "red", fontSize: "10px" }}>{this.state.passerro}</div>
                 <div style={{ paddingTop: "20px", width: "150px", margin: "auto" }}>
                     <Button style={{ width: "150px", backgroundColor: "#00aeff", fontSize: "14px", color: "white" }}
-                        component={Link} to="/"
-                        onClick={this.checkInfor}>
+                        onClick={()=>this.props.onLogIn(this.state.user)}>
                         Login
                     </Button>
                 </div>

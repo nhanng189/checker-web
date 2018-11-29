@@ -3,14 +3,14 @@ import { Router, Route, Switch } from 'react-router';
 import { createBrowserHistory } from 'history';
 
 import Navibar from './Component/Navibar';
-import indexRoutes from './Routes';
+import indexRoutes from './Route';
 import './App.css';
 
 var hist = createBrowserHistory();
 
 class App extends Component {
-  render() {
-    return (<div className="gra">
+    render() {
+        return (<div className="gra">
       <Router history={hist}>
         <Switch>
           {indexRoutes.map((prop, key) => {
@@ -18,9 +18,8 @@ class App extends Component {
           })}
         </Switch>
       </Router>
-    </div>
-    );
-  }
+    </div>);
+    }
 }
 
 export default App;
