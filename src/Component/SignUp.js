@@ -25,43 +25,44 @@ class SignUp extends Component {
             usererro: "",
             passerro: "",
             passconfirmerro: "",
+            user: { userName: "user1", password: "1" }
         }
     }
 
     updateUser = (event) => {
-        this.setState({username: event.target.value});
+        this.setState({ username: event.target.value });
     }
 
     updatePassword = (event) => {
-        this.setState({password: event.target.value});
+        this.setState({ password: event.target.value });
     }
 
     updatePasswordConfirm = (event) => {
-        this.setState({passconfirm: event.target.value});
+        this.setState({ passconfirm: event.target.value });
     }
 
     checkInfor = () => {
         if (this.state.username === "") {
-            this.setState({usererro: "*Username is not empty*"});
+            this.setState({ usererro: "*Username is not empty*" });
         } else {
-            this.setState({usererro: ""});
+            this.setState({ usererro: "" });
         }
         if (this.state.password === "") {
-            this.setState({passerro: "*Password is not empty*"});
+            this.setState({ passerro: "*Password is not empty*" });
         } else {
-            this.setState({passerro: ""});
+            this.setState({ passerro: "" });
         }
         const x = this.state.password;
         const y = this.state.passwordconfirm;
         if (x.indexOf(y) !== -1 && x.length === y.length) {
-            this.setState({passconfirmerro: "*Password and password confirm not match*"});
+            this.setState({ passconfirmerro: "*Password and password confirm not match*" });
         } else {
-            this.setState({passconfirmerro: ""});
+            this.setState({ passconfirmerro: "" });
         }
         if (this.state.passconfirm === "") {
-            this.setState({passconfirmerro: "*Password confirm is not empty*"});
+            this.setState({ passconfirmerro: "*Password confirm is not empty*" });
         } else {
-            this.setState({passconfirmerro: ""});
+            this.setState({ passconfirmerro: "" });
         }
     }
 
@@ -97,7 +98,7 @@ class SignUp extends Component {
                 <div style={{color: "red", fontSize: "10px"}}>{this.state.passconfirmerro}</div>
                 <div style={{ paddingTop: "20px", width: "150px", margin: "auto" }}>
                     <Button style={{ width: "150px", backgroundColor: "#00aeff", fontSize: "14px", color: "white" }}
-                        onClick={this.checkInfor}>
+                        onClick={()=>this.props.onSignUp(this.state.user)}>
                         Sign Up
                     </Button>
                 </div>
