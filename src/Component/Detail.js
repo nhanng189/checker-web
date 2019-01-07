@@ -1,10 +1,12 @@
 import { connect } from 'react-redux';
 import { toggleLove, toggleCheck, addComment } from '../Actions'
+import { Link } from 'react-router-dom';
 
 import React, { Component } from 'react';
 import Navibar from './Navibar';
 import Avatar from '@material-ui/core/Avatar'
 import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
@@ -13,6 +15,7 @@ import Chip from '@material-ui/core/Chip';
 import IconButton from '@material-ui/core/IconButton';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import Love3 from '../icons/love3.png';
 import TextField from '@material-ui/core/TextField';
 import Love4 from '../icons/love4.png';
@@ -41,6 +44,9 @@ class Detail extends Component {
   onSubmit = (event) => {
     event.preventDefault();
     this.props.addComment(this.props.match.params.id, "-1", "Oppa", this.state.comment);
+    this.setState({
+      comment: ""
+    })
   }
 
   onChange = (event) => {
@@ -78,7 +84,7 @@ class Detail extends Component {
           {comment.reply ? comment.reply.map((reply) => {
             return (
               <div style={{ height: "30px", marginBottom: "5px", padding: "10px" }}>
-                <div style={{ float: "left" }}>|</div>
+                <div style={{ float: "left", marginLeft: "15px" }}>|</div>
                 <div style={{ fontWeight: "bold", marginLeft: "15px", float: "left" }}>
                   {reply.user}
                 </div>
@@ -98,8 +104,11 @@ class Detail extends Component {
         <Grid style={{ backgroundColor: "white", marginTop: "90px" }} container>
           <Grid item xs={1} />
 
-          <Grid className="grid" item xs={7}>
+          <Grid style={{ marginTop: "50px" }} item xs={7}>
             <Card className="tlp-card" >
+              <div style={{ position: "absolute" }}>
+                <Button onClick={this.props.history.goBack} style={{ fontSize: "13px", height: "50px", width: "120px" }}><NavigateBeforeIcon /> Go back</Button>
+              </div>
               <CardMedia
                 className="tlp-card-media-detail"
                 image={this.props.posts[this.props.match.params.id].images[0]}
@@ -108,7 +117,7 @@ class Detail extends Component {
             </Card>
           </Grid>
 
-          <Grid className="grid" item xs={3}>
+          <Grid style={{ marginTop: "50px" }} item xs={3}>
             <Card style={{ height: "39vw", padding: "15px" }} className="tlp-card" >
               <CardHeader
                 className="tlp-card-header"
@@ -158,7 +167,7 @@ class Detail extends Component {
                 </div>
               </CardActions>
               <div style={{ padding: "0 15px 0 15px" }}><hr /></div>
-              <CardActions disableActionSpacing className="tlp-card-action-comment">
+              <CardActions disableActionSpacing >
                 <form onSubmit={this.onSubmit}>
                   <TextField name="comment"
                     value={this.state.comment}
@@ -172,7 +181,6 @@ class Detail extends Component {
                     onChange={this.onChange}></TextField>
                 </form>
               </CardActions>
-              <div style={{ padding: "0 15px 0 15px" }}><hr /></div>
               <div style={{ marginTop: "10px", height: "calc(100% - 355px)", marginLeft: "7px", overflowY: "auto" }}>{comments}</div>
             </Card>
           </Grid>

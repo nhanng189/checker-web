@@ -10,29 +10,29 @@ import Users from './Users';
 import '../../Style/Homepage.css'
 
 class Homepage extends Component {
-    render() {
-        return (
-            <div>
-                <Navibar />
-                <Grid container spacing={32}>
-                    <Grid item xs={1} />
-                    <Grid className="grid" item xs={3}>
-                        <Sticky>
-                            <SuggestUsers />
-                            <SuggestGenres />
-                        </Sticky>
-                    </Grid>
-                    <Grid className="grid" item xs={6}>
-                        <Posts />
-                    </Grid>
-                    <Grid style={{ display: "flex", justifyContent: "center" }} className="grid" item xs={1}>
-                        <Users />
-                    </Grid>
-                    <Grid item xs={1} />
-                </Grid>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <Navibar />
+        <Grid container>
+          <Grid item xs={1} />
+          <Grid className="grid" item xs={3}>
+            <Sticky>
+              <SuggestUsers />
+              <SuggestGenres />
+            </Sticky>
+          </Grid>
+          <Grid className="grid" item xs={6}>
+            <Posts history={this.props.history} />
+          </Grid>
+          <Grid style={{ display: "flex", justifyContent: "center" }} className="grid" item xs={1}>
+            <Users />
+          </Grid>
+          <Grid item xs={1} />
+        </Grid>
+      </div>
+    );
+  }
 }
 
 export default Homepage;
