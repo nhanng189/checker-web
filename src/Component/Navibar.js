@@ -112,7 +112,7 @@ class Navibar extends Component {
             <Grid item xs={1} />
             <Grid item xs={10}>
               <Toolbar>
-                <img className="logo" alt="logo" src={Logo1} />
+                <img component={Link} to={'/'} className="logo" alt="logo" src={Logo1} />
 
                 <div className="flexgrow" />
 
