@@ -28,7 +28,7 @@ class WriteContent extends Component {
 
   onChange = (event) => {
     this.setState({title: event.target.value});
-    this.props.handleWriteTitle(this.state.title);
+    this.props.handleWriteTitle(event.target.value);
   }
 
   render() {

@@ -123,6 +123,7 @@ PickAlbum.propTypes = {
   status: PropTypes.bool.isRequired,
   selectedAddTags: PropTypes.func.isRequired,
   distroySelected: PropTypes.func.isRequired,
+  //newPost: propTypes.func.isRequired,
 };
 
 export default PickAlbum;

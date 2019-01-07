@@ -9,7 +9,7 @@ class Posts extends Component {
   render() {
     let elements = this.props.posts.map((post, index) => {
       return <Post
-        index={index} history={this.props.history}
+        index={index}
         avatar={post.avatar} user={post.user}
         time={post.time} title={post.title}
         images={post.images} love={post.love}
