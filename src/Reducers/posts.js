@@ -4,9 +4,9 @@ var initState = {
       avatar: "https://pbs.twimg.com/profile_images/733142049864585216/IzFb9HCz_400x400.jpg",
       user: "Fumika Chan",
       time: "An hour ago",
-      title: "Nhìn mặt thằng này ám ảnh vê lìn.",
-      images: ["https://www.chatwork.com/gateway/download_file.php?bin=1&preview=1&file_id=314828572"],
-      tags: ["Biến thái", "Nguy hiểm", "Lolicon"],
+      title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce placerat fringilla odio vitae gravida.",
+      images: ["https://pbs.twimg.com/media/Drtt3q7X4AAkJwH.jpg:large"],
+      tags: ["1", "2", "3"],
       love: 12,
       comment: 2,
       check: 9,
@@ -14,22 +14,12 @@ var initState = {
       checked: false,
       commentContent: [
         {
-          user: "Khoa Trần",
-          content: "Tiêu diệt nó",
-          reply: [
-            {
-              user: "Nhân cute",
-              content: "Thiến nó"
-            },
-            {
-              user: "Khoa Trần",
-              content: "Oki"
-            }
-          ]
+          user: "Daigo",
+          content: "I love you"
         },
         {
-          user: "Thư babe",
-          content: "Em sợ quá chị"
+          user: "Yasuo",
+          content: "Pretty girl"
         }
       ]
     },
@@ -174,12 +164,29 @@ var initState = {
   ]
 };
 
+const addpost = (state = initState, avatar, user, time, title, images, tags, love, comment, check, loved, checked, commentContent) => {
+    var post = {
+      avatar: avatar,
+      user: user,
+      time: time,
+      title: title,
+      images: images,
+      tags: tags,
+      love: love,
+      comment: comment,
+      check: check,
+      loved: loved,
+      checked: checked,
+      commentContent: commentContent
+    }
+    state.posts.push(post);
+}
+
 const posts = (state = initState, action) => {
   switch (action.type) {
     case 'TOGGLE_LOVE':
-      console.log(action)
       let lovePost = state.posts.map((post, index) => {
-        if (index == action.postId) {
+        if (index === action.postId) {
           if (post.loved === true) {
             post.loved = false;
             post.love = post.love - 1;
@@ -191,12 +198,13 @@ const posts = (state = initState, action) => {
         }
         return post;
       })
+
       return {
         posts: lovePost
       };
     case 'TOGGLE_CHECK':
       let checkPost = state.posts.map((post, index) => {
-        if (index == action.postId) {
+        if (index === action.postId) {
           if (post.checked === true) {
             post.checked = false;
             post.check = post.check - 1;
@@ -208,23 +216,31 @@ const posts = (state = initState, action) => {
         }
         return post;
       })
+
       return {
         posts: checkPost
       };
     case 'ADD_COMMENT':
-      let addComment = state.posts.map((post, index) => {
-        if (index == action.postId) {
-          if (action.commentId === "-1") {
-            post.commentContent.push({
-              user: action.userName,
-              content: action.content
-            })
-          }
-        }
-        return post;
-      })
+      console.log('addComment')
+      return state;
+    case 'NEW_POST':
+      let post = [...state.posts,{
+        avatar: "https://pbs.twimg.com/profile_images/733142049864585216/IzFb9HCz_400x400.jpg",
+        user: "Fumika Chan",
+        time: action.time,
+        title: action.title,
+        images: action.images,
+        tags: action.tags,
+        love: action.love,
+        comment: action.comment,
+        check: action.check,
+        loved: action.loved,
+        checked: action.checked,
+        commentContent: action.commentContent
+      }];
+      console.log(post);
       return {
-        posts: addComment
+        posts: post
       }
     default:
       return state;

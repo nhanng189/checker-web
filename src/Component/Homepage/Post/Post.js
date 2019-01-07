@@ -21,38 +21,12 @@ import Check1 from '../../../icons/check1.png';
 import '../../../Style/TimelinePost.css';
 
 class Post extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      comment: ""
-    }
-  }
-
   toggleLove = () => {
     this.props.toggleLove(this.props.index);
   }
 
   toggleCheck = () => {
     this.props.toggleCheck(this.props.index);
-  }
-
-  onSubmit = (event) => {
-    event.preventDefault();
-    this.props.addComment(this.props.index, "-1", "Oppa", this.state.comment);
-    this.setState({
-      comment: ""
-    })
-  }
-
-  onChange = (event) => {
-    var target = event.target;
-    var value = target.value;
-    var name = target.name;
-
-    this.setState({
-      [name]: value
-    })
   }
 
   render() {
@@ -83,7 +57,7 @@ class Post extends Component {
         </CardContent>
         <CardMedia
           component={Link} to={`/post/${this.props.index}`}
-          className="tlp-card-media"
+          className="tlp-card-media"  
           image={this.props.images[0]}
         >
         </CardMedia>
@@ -102,7 +76,7 @@ class Post extends Component {
           </div>
           <div style={{ flexGrow: "1" }} />
           <div className="tlp-action-field">
-            <IconButton component={Link} to={`/post/${this.props.index}`} disableRipple="true" disableTouchRipple="true" className="tlp-action-icon">
+            <IconButton disableRipple="true" disableTouchRipple="true" className="tlp-action-icon">
               <img className="tlp-action-icon-img" alt="" src={Comment} />
             </IconButton>
             {`Comment ${this.props.comment}`}
@@ -110,11 +84,7 @@ class Post extends Component {
         </CardActions>
         <div style={{ padding: "0 15px 0 15px" }}><hr /></div>
         <CardActions disableActionSpacing className="tlp-card-action-comment">
-          <form style={{width: "100%"}} onSubmit={this.onSubmit}>
-            <InputBase style={{ fontSize: "15px" }} fullWidth placeholder="Add your comment ..."
-              name="comment" value={this.state.comment} onChange={this.onChange}>
-            </InputBase>
-          </form>
+          <InputBase style={{ fontSize: "15px" }} fullWidth placeholder="Add your comment ..."></InputBase>
         </CardActions>
       </Card>
     );
@@ -124,8 +94,7 @@ class Post extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     toggleLove: postId => dispatch(toggleLove(postId)),
-    toggleCheck: postId => dispatch(toggleCheck(postId)),
-    addComment: (postId, commentId, userName, content) => dispatch(addComment(postId, commentId, userName, content))
+    toggleCheck: postId => dispatch(toggleCheck(postId))
   }
 }
 
