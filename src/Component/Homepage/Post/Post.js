@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { toggleLove, toggleCheck, addComment } from '../../../Actions'
 
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -89,4 +91,11 @@ class Post extends Component {
   }
 }
 
-export default Post;
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleLove: postId => dispatch(toggleLove(postId)),
+    toggleCheck: postId => dispatch(toggleCheck(postId))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Post);

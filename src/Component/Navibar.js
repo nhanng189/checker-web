@@ -21,7 +21,6 @@ import AddIcon from '@material-ui/icons/Add';
 import '../Style/Navibar.css';
 
 import Logo1 from '../icons/logo1.png';
-// import Logo2 from '../icons/logo2.png';
 
 class Navibar extends Component {
 
@@ -114,7 +113,6 @@ class Navibar extends Component {
             <Grid item xs={10}>
               <Toolbar>
                 <img className="logo" alt="logo" src={Logo1} />
-                {/* <img style={{ margin: "5px", height: "35px" }} alt="logo" src={Logo2} /> */}
 
                 <div className="flexgrow" />
 
