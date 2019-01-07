@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { toggleLove, toggleCheck } from '../Actions'
+import { toggleLove, toggleCheck, addComment } from '../Actions'
 
 import React, { Component } from 'react';
 import Navibar from './Navibar';
@@ -14,7 +14,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import Love3 from '../icons/love3.png';
-import InputBase from '@material-ui/core/InputBase';
+import TextField from '@material-ui/core/TextField';
 import Love4 from '../icons/love4.png';
 import Comment from '../icons/comment.png';
 import Check0 from '../icons/check0.png';
@@ -22,6 +22,13 @@ import Check1 from '../icons/check1.png';
 import '../Style/Detail.css';
 
 class Detail extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      comment: ""
+    }
+  }
 
   toggleLove = () => {
     this.props.toggleLove(this.props.match.params.id)
@@ -33,20 +40,7 @@ class Detail extends Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-    let clone = [...this.state.users];
-    clone.map((user, index) => {
-      if (index == this.state.index) {
-        user.commentContent.push({
-          user: "Sudo",
-          content: this.state.comment
-        });
-        user.comment = user.comment + 1;
-      }
-    })
-    this.setState({
-      comment: "",
-      users: clone
-    })
+    this.props.addComment(this.props.match.params.id, "-1", "Oppa", this.state.comment);
   }
 
   onChange = (event) => {
@@ -70,19 +64,52 @@ class Detail extends Component {
       )
     })
 
+    let comments = this.props.posts[this.props.match.params.id].commentContent.map((comment, index) => {
+      return (
+        <div>
+          <div style={{ height: "30px", marginBottom: "5px", padding: "10px" }}>
+            <div style={{ fontWeight: "bold", float: "left" }}>
+              {comment.user}
+            </div>
+            <div style={{ float: "left" }}>
+              : {comment.content}
+            </div>
+          </div>
+          {comment.reply ? comment.reply.map((reply) => {
+            return (
+              <div style={{ height: "30px", marginBottom: "5px", padding: "10px" }}>
+                <div style={{ float: "left" }}>|</div>
+                <div style={{ fontWeight: "bold", marginLeft: "15px", float: "left" }}>
+                  {reply.user}
+                </div>
+                <div style={{ float: "left" }}>
+                  : {reply.content}
+                </div>
+              </div>
+            )
+          }) : ""}
+        </div>
+      )
+    })
+
     return (
       <div>
         <Navibar />
-        <Grid style={{ marginTop: "50px" }} container spacing={32}>
-          <Grid item xs={2} />
+        <Grid style={{ backgroundColor: "white", marginTop: "90px" }} container>
+          <Grid item xs={1} />
 
-          <Grid className="grid" item xs={8}>
+          <Grid className="grid" item xs={7}>
             <Card className="tlp-card" >
               <CardMedia
-                className="tlp-card-media"
+                className="tlp-card-media-detail"
                 image={this.props.posts[this.props.match.params.id].images[0]}
               >
               </CardMedia>
+            </Card>
+          </Grid>
+
+          <Grid className="grid" item xs={3}>
+            <Card style={{ height: "39vw", padding: "15px" }} className="tlp-card" >
               <CardHeader
                 className="tlp-card-header"
                 avatar={
@@ -132,14 +159,27 @@ class Detail extends Component {
               </CardActions>
               <div style={{ padding: "0 15px 0 15px" }}><hr /></div>
               <CardActions disableActionSpacing className="tlp-card-action-comment">
-                <InputBase style={{ fontSize: "15px" }} fullWidth placeholder="Add your comment ..."></InputBase>
+                <form onSubmit={this.onSubmit}>
+                  <TextField name="comment"
+                    value={this.state.comment}
+                    style={{ width: "428px" }}
+                    type="text"
+                    variant="outlined"
+                    placeholder="Add your comment ..."
+                    InputProps={{
+                      style: { fontSize: "16px", height: "40px" }
+                    }}
+                    onChange={this.onChange}></TextField>
+                </form>
               </CardActions>
+              <div style={{ padding: "0 15px 0 15px" }}><hr /></div>
+              <div style={{ marginTop: "10px", height: "calc(100% - 355px)", marginLeft: "7px", overflowY: "auto" }}>{comments}</div>
             </Card>
           </Grid>
 
-          <Grid item xs={2} />
+          <Grid item xs={1} />
         </Grid>
-      </div>
+      </div >
     );
   }
 }
@@ -153,7 +193,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     toggleLove: postId => dispatch(toggleLove(postId)),
-    toggleCheck: postId => dispatch(toggleCheck(postId))
+    toggleCheck: postId => dispatch(toggleCheck(postId)),
+    addComment: (postId, commentId, userName, content) => dispatch(addComment(postId, commentId, userName, content))
   }
 }
 

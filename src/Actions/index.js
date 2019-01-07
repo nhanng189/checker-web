@@ -12,10 +12,11 @@ export const toggleCheck = postId => {
   }
 }
 
-export const addComment = (postId, userName, content) => {
+export const addComment = (postId, commentId, userName, content) => {
   return {
     type: 'ADD_COMMENT',
     postId,
+    commentId,
     userName,
     content
   }
