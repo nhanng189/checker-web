@@ -226,6 +226,24 @@ const posts = (state = initState, action) => {
       return {
         posts: addComment
       }
+    case 'NEW_POST':
+      let post = [...state.posts, {
+        avatar: "https://pbs.twimg.com/profile_images/733142049864585216/IzFb9HCz_400x400.jpg",
+        user: "Fumika Chan",
+        time: action.time,
+        title: action.title,
+        images: action.images,
+        tags: action.tags,
+        love: action.love,
+        comment: action.comment,
+        check: action.check,
+        loved: action.loved,
+        checked: action.checked,
+        commentContent: action.commentContent
+      }];
+      return {
+        posts: post
+      }
     default:
       return state;
   }
