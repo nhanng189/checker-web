@@ -4,9 +4,9 @@ var initState = {
       avatar: "https://pbs.twimg.com/profile_images/733142049864585216/IzFb9HCz_400x400.jpg",
       user: "Fumika Chan",
       time: "An hour ago",
-      title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce placerat fringilla odio vitae gravida.",
-      images: ["https://pbs.twimg.com/media/Drtt3q7X4AAkJwH.jpg:large"],
-      tags: ["1", "2", "3"],
+      title: "Nhìn mặt thằng này ám ảnh vê lìn.",
+      images: ["https://www.chatwork.com/gateway/download_file.php?bin=1&preview=1&file_id=314828572"],
+      tags: ["Biến thái", "Nguy hiểm", "Lolicon"],
       love: 12,
       comment: 2,
       check: 9,
@@ -14,12 +14,22 @@ var initState = {
       checked: false,
       commentContent: [
         {
-          user: "Daigo",
-          content: "I love you"
+          user: "Khoa Trần",
+          content: "Tiêu diệt nó",
+          reply: [
+            {
+              user: "Nhân cute",
+              content: "Thiến nó"
+            },
+            {
+              user: "Khoa Trần",
+              content: "Oki"
+            }
+          ]
         },
         {
-          user: "Yasuo",
-          content: "Pretty girl"
+          user: "Thư babe",
+          content: "Em sợ quá chị"
         }
       ]
     },
@@ -167,8 +177,9 @@ var initState = {
 const posts = (state = initState, action) => {
   switch (action.type) {
     case 'TOGGLE_LOVE':
+      console.log(action)
       let lovePost = state.posts.map((post, index) => {
-        if (index === action.postId) {
+        if (index == action.postId) {
           if (post.loved === true) {
             post.loved = false;
             post.love = post.love - 1;
@@ -180,13 +191,12 @@ const posts = (state = initState, action) => {
         }
         return post;
       })
-
       return {
         posts: lovePost
       };
     case 'TOGGLE_CHECK':
       let checkPost = state.posts.map((post, index) => {
-        if (index === action.postId) {
+        if (index == action.postId) {
           if (post.checked === true) {
             post.checked = false;
             post.check = post.check - 1;
@@ -198,13 +208,24 @@ const posts = (state = initState, action) => {
         }
         return post;
       })
-
       return {
         posts: checkPost
       };
     case 'ADD_COMMENT':
-      console.log('addComment')
-      return state;
+      let addComment = state.posts.map((post, index) => {
+        if (index == action.postId) {
+          if (action.commentId === "-1") {
+            post.commentContent.push({
+              user: action.userName,
+              content: action.content
+            })
+          }
+        }
+        return post;
+      })
+      return {
+        posts: addComment
+      }
     default:
       return state;
   }
