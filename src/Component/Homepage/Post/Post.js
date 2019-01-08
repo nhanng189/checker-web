@@ -39,7 +39,7 @@ class Post extends Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-    this.props.addComment(this.props.index, "-1", "Oppa", this.state.comment);
+    this.props.addComment(this.props.index, "-1", "Sudo", this.state.comment);
     this.setState({
       comment: ""
     })

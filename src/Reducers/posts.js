@@ -215,6 +215,7 @@ const posts = (state = initState, action) => {
       let addComment = state.posts.map((post, index) => {
         if (index == action.postId) {
           if (action.commentId === "-1") {
+            post.comment = post.comment + 1;
             post.commentContent.push({
               user: action.userName,
               content: action.content
@@ -227,9 +228,9 @@ const posts = (state = initState, action) => {
         posts: addComment
       }
     case 'NEW_POST':
-      let post = [...state.posts, {
-        avatar: "https://pbs.twimg.com/profile_images/733142049864585216/IzFb9HCz_400x400.jpg",
-        user: "Fumika Chan",
+      let post = [{
+        avatar: "https://vinagamemobile.com/wp-content/uploads/2018/04/avatar-doi-fb-01.jpg",
+        user: "Sudo",
         time: action.time,
         title: action.title,
         images: action.images,
@@ -240,7 +241,7 @@ const posts = (state = initState, action) => {
         loved: action.loved,
         checked: action.checked,
         commentContent: action.commentContent
-      }];
+      }, ...state.posts];
       return {
         posts: post
       }

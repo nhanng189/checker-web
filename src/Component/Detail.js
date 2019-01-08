@@ -43,7 +43,7 @@ class Detail extends Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-    this.props.addComment(this.props.match.params.id, "-1", "Oppa", this.state.comment);
+    this.props.addComment(this.props.match.params.id, "-1", "Sudo", this.state.comment);
     this.setState({
       comment: ""
     })
@@ -66,7 +66,7 @@ class Detail extends Component {
       else if (color === "primary") color = "secondary";
       else color = "default";
       return (
-        <Chip color={color} label={tag} style={{ fontSize: "13px", height: "20px", margin: "5px 5px 0 0" }} />
+        <Chip color={color} label={tag} style={{ fontSize: "13px", height: "20px", margin: "20px 5px 0 0" }} />
       )
     })
 

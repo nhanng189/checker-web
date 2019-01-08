@@ -66,7 +66,20 @@ class PickImages extends Component {
                 <div style={{
                   width: "auto", height: "auto", float: "left", marginTop: "10px", display: "flex", justifyContent: "center"
                 }} >
-                  <input type="file" onChange={this.props.onDrop} />
+                  <input style={{ display: "none" }} onChange={this.props.onDrop} id="icon-button-file" type="file" />
+                  <label htmlFor="icon-button-file">
+                    <div style={{
+                      width: "127px", height: "71.5px", float: "left", margin: "10px", display: "flex", justifyContent: "center"
+                    }} >
+                      <label htmlFor="icon-button-file">
+                        <Button style={{ background: "transparent" }}>
+                          <label htmlFor="icon-button-file">
+                            <AddBox />
+                          </label>
+                        </Button>
+                      </label>
+                    </div>
+                  </label>
                 </div>
               </CardContent>
             </Card>

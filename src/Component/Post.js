@@ -30,6 +30,7 @@ class Post extends Component {
   }
 
   handleAddTag = event => () => {
+    console.log(">>>qua")
     let TagsData = this.state.tags;
     TagsData.push(event);
     this.setState({ tags: TagsData })

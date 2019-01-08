@@ -133,7 +133,7 @@ class Navibar extends Component {
 
   newPost = () => {
     this.distroySelected();
-    this.props.newPost("avatar", "user", "a minute ago", this.state.comments, this.state.photos, this.state.tags, 0, 0, 1, false, true, []);
+    this.props.newPost("avatar", "user", "a minute ago", this.state.comments, this.state.photos, this.state.tags, 0, 0, 0, false, false, []);
   }
 
   render() {
