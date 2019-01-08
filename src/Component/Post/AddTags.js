@@ -32,6 +32,11 @@ class AddTags extends Component {
     this.setState({ tag: event.target.value })
   }
 
+  onAddTag = () => {
+    console.log(">>>ok")
+    this.props.handleAddTag(this.state.tag)
+  }
+
   onSubmit = (event) => {
     event.preventDefault();
     this.props.handleAddTag(this.state.tag);

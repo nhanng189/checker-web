@@ -16,6 +16,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import IconButton from '@material-ui/core/IconButton';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
+import ImageUploader from 'react-images-upload';
 
 import '../../Style/NewPost.css'
 
@@ -63,11 +64,22 @@ class PickImages extends Component {
               <CardContent style={{ padding: "0 15px 0 15px" }}>
                 {elements}
                 <div style={{
-                  width: "127px", height: "71.5px", float: "left", margin: "10px", display: "flex", justifyContent: "center"
+                  width: "auto", height: "auto", float: "left", marginTop: "10px", display: "flex", justifyContent: "center"
                 }} >
-                  <Button style={{ background: "transparent" }}>
-                    <AddBox />
-                  </Button>
+                  <input style={{ display: "none" }} onChange={this.props.onDrop} id="icon-button-file" type="file" />
+                  <label htmlFor="icon-button-file">
+                    <div style={{
+                      width: "127px", height: "71.5px", float: "left", margin: "10px", display: "flex", justifyContent: "center"
+                    }} >
+                      <label htmlFor="icon-button-file">
+                        <Button style={{ background: "transparent" }}>
+                          <label htmlFor="icon-button-file">
+                            <AddBox />
+                          </label>
+                        </Button>
+                      </label>
+                    </div>
+                  </label>
                 </div>
               </CardContent>
             </Card>
@@ -89,6 +101,7 @@ PickImages.propTypes = {
   status: PropTypes.bool.isRequired,
   selectedWriteContent: PropTypes.func.isRequired,
   distroySelected: PropTypes.func.isRequired,
+  onDrop: PropTypes.func.isRequired
 };
 
 export default PickImages;

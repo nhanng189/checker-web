@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router';
+import { connect } from 'react-redux';
+import { newPost } from '../Actions'
+import ImageUploader from 'react-images-upload';
 
 import PickImage from './Post/PickImages';
 import WriteContent from './Post/WriteContent';
@@ -28,18 +32,41 @@ class Navibar extends Component {
     super(props);
     this.state = {
       search: "",
-      photos: ["https://genknews.genkcdn.vn/2016/hinh-nen-gam-3d-2-1474200966875.jpg",
-        "https://hinhnendep.xyz/wp-content/uploads/2016/07/hinh-nen-lien-minh-lol-dep-hd-6.jpg",
-        "https://vignette.wikia.nocookie.net/leagueoflegends/images/1/12/Thresh_Qu%C3%A1n_Qu%C3%A2n.jpg/revision/latest?cb=20160408163627&path-prefix=vi",
-      ],
-      albums: [1, 2, 3],
-      tags: [1, 2, 3],
+      photos: [],
+      albums: ["class 12", "game", "view"],
+      tags: [],
       comments: "",
       pickimage: false,
       writecontent: false,
       addtags: false,
       pickalbum: false,
+      redirect: false
     }
+  }
+
+  generatePreviewImgUrl = (file, callback) => {
+    const reader = new FileReader()
+    const url = reader.readAsDataURL(file)
+    reader.onloadend = e => callback(reader.result)
+  }
+
+  onDrop = (event) => {
+    const file = event.target.files[0]
+    if (!file) {
+      return;
+    }
+    this.generatePreviewImgUrl(file, previewImgUrl => {
+      let photo = this.state.photos;
+      photo.push(previewImgUrl);
+      this.setState({
+        photos: photo
+      });
+    })
+    console.log("haha");
+  }
+
+  handleOnClick = () => {
+    this.setState({ redirect: true });
   }
 
   handleDeleteTag = event => () => {
@@ -55,8 +82,8 @@ class Navibar extends Component {
     this.setState({ tags: TagsData })
   }
 
-  handleWriteComment = event => () => {
-    this.setState({ comments: event.target.value });
+  handleWriteComment = (value) => {
+    this.setState({ comments: value });
   }
 
   selectedPickImage = () => {
@@ -104,6 +131,11 @@ class Navibar extends Component {
     });
   }
 
+  newPost = () => {
+    this.distroySelected();
+    this.props.newPost("avatar", "user", "a minute ago", this.state.comments, this.state.photos, this.state.tags, 0, 0, 0, false, false, []);
+  }
+
   render() {
     return (
       <div>
@@ -112,7 +144,7 @@ class Navibar extends Component {
             <Grid item xs={1} />
             <Grid item xs={10}>
               <Toolbar>
-                <img component={Link} to={'/'} className="logo" alt="logo" src={Logo1} />
+                <img className="logo" alt="logo" src={Logo1} />
 
                 <div className="flexgrow" />
 
@@ -161,10 +193,11 @@ class Navibar extends Component {
           status={this.state.pickimage}
           selectedWriteContent={this.selectedWriteContent}
           distroySelected={this.distroySelected}
+          onDrop={this.onDrop}
         />
         <WriteContent
           status={this.state.writecontent}
-          handleWriteComment={this.handleWriteComment}
+          handleWriteTitle={this.handleWriteComment}
           selectedAddTags={this.selectedAddTags}
           selectedPickImage={this.selectedPickImage}
           distroySelected={this.distroySelected}
@@ -182,11 +215,17 @@ class Navibar extends Component {
           albums={this.state.albums}
           status={this.state.pickalbum}
           selectedAddTags={this.selectedAddTags}
-          distroySelected={this.distroySelected}
+          distroySelected={this.newPost}
         />
       </div>
     );
   }
 }
 
-export default Navibar;
+const mapDispatchToProps = dispatch => {
+  return {
+    newPost: (avatar, user, time, title, images, tags, love, comment, check, loved, checked, commentContent) => dispatch(newPost(avatar, user, time, title, images, tags, love, comment, check, loved, checked, commentContent))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Navibar); 

@@ -215,6 +215,7 @@ const posts = (state = initState, action) => {
       let addComment = state.posts.map((post, index) => {
         if (index == action.postId) {
           if (action.commentId === "-1") {
+            post.comment = post.comment + 1;
             post.commentContent.push({
               user: action.userName,
               content: action.content
@@ -225,6 +226,24 @@ const posts = (state = initState, action) => {
       })
       return {
         posts: addComment
+      }
+    case 'NEW_POST':
+      let post = [{
+        avatar: "https://vinagamemobile.com/wp-content/uploads/2018/04/avatar-doi-fb-01.jpg",
+        user: "Sudo",
+        time: action.time,
+        title: action.title,
+        images: action.images,
+        tags: action.tags,
+        love: action.love,
+        comment: action.comment,
+        check: action.check,
+        loved: action.loved,
+        checked: action.checked,
+        commentContent: action.commentContent
+      }, ...state.posts];
+      return {
+        posts: post
       }
     default:
       return state;

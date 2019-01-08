@@ -21,3 +21,21 @@ export const addComment = (postId, commentId, userName, content) => {
     content
   }
 }
+
+export const newPost = (avatar, user, time, title, images, tags, love, comment, check, loved, checked, commentContent) => {
+  return {
+    type: 'NEW_POST',
+    avatar,
+    user,
+    time,
+    title,
+    images,
+    tags,
+    love,
+    comment,
+    check,
+    loved,
+    checked,
+    commentContent,
+  }
+}
